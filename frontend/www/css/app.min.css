@@ -3,6 +3,9 @@
   .container-fluid h1 {
     text-align: center;
     margin-top: 250px; }
+  .container-fluid iframe {
+    height: 500px !important;
+    width: 840px !important; }
   .container-fluid .playlist-wrapper {
     background-color: #000;
     color: #fff;
