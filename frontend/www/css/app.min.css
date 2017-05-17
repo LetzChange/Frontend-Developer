@@ -1,0 +1,60 @@
+.container-fluid {
+  margin: 12px 12px 12px 0; }
+  .container-fluid h1 {
+    text-align: center;
+    margin-top: 250px; }
+  .container-fluid iframe {
+    height: 500px !important;
+    width: 840px !important; }
+  .container-fluid .playlist-wrapper {
+    background-color: #000;
+    color: #fff;
+    min-height: 500px; }
+    .container-fluid .playlist-wrapper img {
+      width: 85px;
+      height: 60px; }
+    .container-fluid .playlist-wrapper .list-item {
+      padding: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4); }
+      .container-fluid .playlist-wrapper .list-item .fa {
+        transition: all 0.5s ease;
+        z-index: 100; }
+      .container-fluid .playlist-wrapper .list-item .fa:hover {
+        font-size: 25px;
+        color: red;
+        cursor: pointer; }
+    .container-fluid .playlist-wrapper .list-item:hover {
+      background-color: #979797;
+      cursor: pointer; }
+
+.loading {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  z-index: 100;
+  background: #000;
+  /*opacity: 0.5;*/
+  text-align: center;
+  padding: 50vh;
+  top: 0; }
+
+.btn-primary {
+  margin: 20px 0; }
+
+form {
+  margin: 23px; }
+  form .form-group {
+    width: 100%; }
+    form .form-group label {
+      margin: 0 31px; }
+    form .form-group input {
+      width: 55% !important; }
+    form .form-group input.error {
+      border: 1px solid red !important; }
+    form .form-group button {
+      padding: 6px 55px;
+      margin: 0 20px; }
+    form .form-group span {
+      position: absolute;
+      bottom: 0;
+      left: 170px; }
