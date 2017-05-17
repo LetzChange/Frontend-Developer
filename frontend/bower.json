@@ -1,0 +1,15 @@
+{
+  "name": "radioapp",
+  "description": "Task to show match reports",
+  "main": "gulpfile.js",
+  "authors": [
+    "Arijit Sarkar"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "angular-bootstrap": "^0.14.3",
+    "angular-ui-router": "^0.3.2",
+    "angular": "^1.6.4",
+    "ng-youtube-embed": "^1.7.10"
+  }
+}

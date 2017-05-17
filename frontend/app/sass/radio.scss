@@ -1,0 +1,74 @@
+.container-fluid {
+    margin: 12px 12px 12px 0;
+    h1 {
+        text-align: center;
+        margin-top: 250px;
+    }
+    .playlist-wrapper {
+        background-color: #000;
+        color: #fff;
+        min-height: 500px;
+        img {
+            width: 85px;
+            height: 60px;
+        }
+        .list-item {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            .fa {
+                transition: all 0.5s ease;
+                z-index: 100;
+            }
+            .fa:hover {
+                font-size: 25px;
+                color: red;
+                cursor: pointer;
+            }
+        }
+        .list-item:hover {
+            background-color: #979797;
+            cursor: pointer;
+        }
+    }
+}
+
+.loading {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    z-index: 100;
+    background: #000;
+    /*opacity: 0.5;*/
+    text-align: center;
+    padding: 50vh;
+    top: 0;
+}
+
+.btn-primary {
+    margin: 20px 0;
+}
+
+form {
+    margin: 23px;
+    .form-group {
+        width: 100%;
+        label {
+            margin: 0 31px;
+        }
+        input {
+            width: 55% !important;
+        }
+        input.error {
+            border: 1px solid red !important;
+        }
+        button {
+            padding: 6px 55px;
+            margin: 0 20px;
+        }
+        span {
+            position: absolute;
+            bottom: 0;
+            left: 170px;
+        }
+    }
+}
