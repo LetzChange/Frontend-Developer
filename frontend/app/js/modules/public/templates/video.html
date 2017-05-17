@@ -1,0 +1,47 @@
+<div class="container-fluid" ng-init="vm.init()">
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div class="row">
+        <div class="col-md-8" ng-show="!vm.videos.length">
+            <h1>No playlist foud!!</h1>
+        </div>
+        <div class="col-md-8" ng-show="vm.videos.length">
+            <ng-youtube-embed video="vm.videoID" autoplay="true" color="white" disablekb="true" end="vm.end">
+            </ng-youtube-embed>
+        </div>
+        <div class="col-md-4 playlist-wrapper">
+            <div class="row" class="playlist">
+                <div class="col-md-12 list-item" ng-repeat="video in vm.videos track by $index" ng-click="vm.changeVideo($index)">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span>{{$index+1}}</span>
+                            <img ng-src="{{video.thumbnail || vm.defaultThumbnail}}" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <p> <strong>Title:</strong> {{video.title}}</p>
+                            <p><strong>Duration:</strong> {{video.duration}}</p>
+                        </div>
+                        <div class="col-md-2" ng-click="vm.deletVideo($index)">
+                            <span class="fa fa-trash pull-right"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <button class="btn btn-primary" ng-click="vm.showForm = !vm.showForm;" ng-show="!vm.showForm">
+                Add Youtube Link
+            </button>
+            <form name="addLink" class="form-inline" ng-show="vm.showForm">
+                <div class="form-group ">
+                    <label for="link ">Enter Link</label>
+                    <input type="text" name="link" ng-model="vm.form.link" class="form-control" id="link" placeholder="Link" ng-pattern="vm.youtubeUrlRegex" minlength="1" ng-class="{'error': addLink.link.$dirty && addLink.link.$invalid}">
+                    <span ng-show="addLink.link.$dirty && addLink.link.$invalid">Please Enter valid URL</span>
+                    <button class="btn btn-success" ng-click="vm.addLink()">Add</button>
+                    <button class="btn btn-danger" ng-click="vm.showForm = !vm.showForm;" ng-show="vm.showForm">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
