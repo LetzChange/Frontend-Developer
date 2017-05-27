@@ -1,0 +1,101 @@
+body {
+    background-color: #c3c3c3;
+}
+
+.videogular-container {
+    height: 500px;
+    margin: auto;
+    overflow: hidden;
+    padding-left: 0;
+}
+
+.container-fluid {
+    h1 {
+        text-align: center;
+        margin-top: 250px;
+    }
+    .content-wrapper {
+        color: #000;
+        min-height: 500px;
+        .current-playing {
+            border-left: 3px solid blue !important;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        .item {
+            margin-bottom: 5px;
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            background-color: #fff;
+            .fa-trash {
+                z-index: 9;
+                font-size: 35px;
+            }
+            .fa-trash:hover {
+                color: red;
+                cursor: pointer;
+            }
+        }
+        .item:hover {
+            cursor: pointer;
+            .video-detail {
+                color: #00F;
+            }
+        }
+    }
+}
+
+.loading {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    z-index: 100;
+    background: #000;
+    /*opacity: 0.5;*/
+    text-align: center;
+    padding: 50vh;
+    top: 0;
+}
+
+.btn-primary {
+    margin: 20px 0;
+}
+
+.navigation-bar {
+    background-color: #373737;
+    margin-bottom: 15px;
+    .fa {
+        font-size: 30px;
+        margin: 25px 0 0 25px;
+        color: #fff;
+        opacity: 0.8;
+    }
+    form {
+        margin: 23px;
+        .form-group {
+            width: 100%;
+            label {
+                margin: 0 30px;
+                color: #fff;
+            }
+            input {
+                width: 50% !important;
+            }
+            input.error {
+                border: 1px solid red !important;
+            }
+            button {
+                padding: 7px 50px;
+                margin: 0 20px;
+            }
+            span {
+                position: absolute;
+                bottom: 0;
+                left: 215px;
+                color: red;
+            }
+        }
+    }
+}

@@ -1,0 +1,78 @@
+body {
+  background-color: #c3c3c3; }
+
+.videogular-container {
+  height: 500px;
+  margin: auto;
+  overflow: hidden;
+  padding-left: 0; }
+
+.container-fluid h1 {
+  text-align: center;
+  margin-top: 250px; }
+
+.container-fluid .content-wrapper {
+  color: #000;
+  min-height: 500px; }
+  .container-fluid .content-wrapper .current-playing {
+    border-left: 3px solid blue !important; }
+  .container-fluid .content-wrapper img {
+    width: 100%;
+    height: 100%; }
+  .container-fluid .content-wrapper .item {
+    margin-bottom: 5px;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: #fff; }
+    .container-fluid .content-wrapper .item .fa-trash {
+      z-index: 9;
+      font-size: 35px; }
+    .container-fluid .content-wrapper .item .fa-trash:hover {
+      color: red;
+      cursor: pointer; }
+  .container-fluid .content-wrapper .item:hover {
+    cursor: pointer; }
+    .container-fluid .content-wrapper .item:hover .video-detail {
+      color: #00F; }
+
+.loading {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  z-index: 100;
+  background: #000;
+  /*opacity: 0.5;*/
+  text-align: center;
+  padding: 50vh;
+  top: 0; }
+
+.btn-primary {
+  margin: 20px 0; }
+
+.navigation-bar {
+  background-color: #373737;
+  margin-bottom: 15px; }
+  .navigation-bar .fa {
+    font-size: 30px;
+    margin: 25px 0 0 25px;
+    color: #fff;
+    opacity: 0.8; }
+  .navigation-bar form {
+    margin: 23px; }
+    .navigation-bar form .form-group {
+      width: 100%; }
+      .navigation-bar form .form-group label {
+        margin: 0 30px;
+        color: #fff; }
+      .navigation-bar form .form-group input {
+        width: 50% !important; }
+      .navigation-bar form .form-group input.error {
+        border: 1px solid red !important; }
+      .navigation-bar form .form-group button {
+        padding: 7px 50px;
+        margin: 0 20px; }
+      .navigation-bar form .form-group span {
+        position: absolute;
+        bottom: 0;
+        left: 215px;
+        color: red; }

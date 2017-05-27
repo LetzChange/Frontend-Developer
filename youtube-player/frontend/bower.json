@@ -1,0 +1,26 @@
+{
+  "name": "youtubePlayer",
+  "description": "A youtube player",
+  "main": "gulpfile.js",
+  "authors": [
+    "Shawon Kanji"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "angular-bootstrap": "^0.14.3",
+    "angular-ui-router": "^0.3.2",
+    "angular": "^1.6.4",
+    "ng-youtube-embed": "^1.7.10",
+    "videogular": "~1.3.2",
+    "videogular-controls": "~1.3.2",
+    "videogular-buffering": "~1.3.2",
+    "videogular-overlay-play": "~1.3.2",
+    "videogular-poster": "~1.3.2",
+    "videogular-ima-ads": "~1.3.2",
+    "videogular-angulartics": "~1.3.2",
+    "angular-sanitize": "^1.5.3",
+    "bower-videogular-youtube": "videogular-youtube#^2.0.6",
+    "angular-animate": "^1.6.4",
+    "angular-toastr": "^2.1.1"
+  }
+}
