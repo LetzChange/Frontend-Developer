@@ -1,0 +1,66 @@
+<div class="container-fluid" ng-init="vm.init()">
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div class="row">
+        <div class="col-md-12 navigation-bar">
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="fa fa-youtube" aria-hidden="true">Youtube Video Player</i>
+                </div>
+                <div class="col-md-8">
+                    <form name="addToPlaylistForm" class="form-inline" ng-submit="vm.addToPlaylist()">
+                        <div class="form-group ">
+                            <label for="url ">Add Youtube Link</label>
+                            <input type="text" name="url" ng-model="vm.form.url" class="form-control" id="url" placeholder="Paste Link here" ng-pattern="vm.youtubeUrlRegex" minlength="1" ng-class="{'error': addToPlaylistForm.url.$dirty && addToPlaylistForm.url.$invalid}">
+                            <span ng-show="addToPlaylistForm.url.$dirty && addToPlaylistForm.url.$invalid">Please Enter a valid URL</span>
+                            <button class="btn btn-success" ng-disabled="addToPlaylistForm.url.$dirty && addToPlaylistForm.url.$invalid">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8" ng-show="!vm.videoSrc.length">
+            <h1>No playlist foud!!</h1>
+        </div>
+        <div class="col-md-8 videogular-container" ng-show="vm.videoSrc.length">
+            <!--   <ng-youtube-embed video="vm.videoID" autoplay="true" color="white" disablekb="true" end="vm.end">
+            </ng-youtube-embed> -->
+            <videogular vg-theme="vm.config.theme.url" vg-player-ready="vm.onPlayerReady($API)" vg-complete="vm.onVideoComplete()">
+                <vg-media vg-src="vm.config.sources" vg-youtube="rel=1;showinfo=1">
+                </vg-media>
+                <vg-controls>
+                    <vg-play-pause-button></vg-play-pause-button>
+                    <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
+                    <vg-scrub-bar>
+                        <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                    </vg-scrub-bar>
+                    <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
+                    <vg-volume>
+                        <vg-mute-button></vg-mute-button>
+                        <vg-volume-bar></vg-volume-bar>
+                    </vg-volume>
+                    <vg-fullscreen-button></vg-fullscreen-button>
+                </vg-controls>
+                <vg-overlay-play></vg-overlay-play>
+            </videogular>
+        </div>
+        <div class="col-md-4 content-wrapper">
+            <div class="row" class="content">
+                <div class="col-md-12 item" ng-repeat="video in vm.videoSrc track by $index" ng-click="vm.changeVideoSource($index)" ng-class="{'current-playing': vm.currentVideoSourceIndex===$index}">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img ng-src="{{video.thumbnail}}" alt="" ng-show="!!video.thumbnail">
+                            <i class="fa fa-music fa-5x" aria-hidden="true" ng-show="!video.thumbnail"></i>
+                        </div>
+                        <div class="col-md-6 video-detail">
+                            <p> <strong>Title:</strong> {{video.title}}</p>
+                            <p><strong>Duration:</strong> {{video.duration}} sec.</p>
+                        </div>
+                        <div class="col-md-2" ng-click="vm.removeVideo($index)">
+                            <span class="fa fa-trash pull-right"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
