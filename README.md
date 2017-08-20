@@ -1,32 +1,19 @@
-## Frontend Developer at LetzChange Foundation
+++++++++ Functionality +++++++++++
+- Here user can add songs with youtube URL
+- User can listen any song of current playlist by clicking on it
+- If user listen any song complete, that song will be deleted from playlist
 
-Not just ‘Frontend’, are you a pro at web development with a special liking for JavaScript? How about working with a team that’s full of the creative breed and where food and outings are considered as being equally important to work?
+++++++++++ API USED ++++++++++++++++
+- Youtube Data api is used to validate the youtube URL
+- Youtube Embedded video event is used for video playing and other events firing for current video
 
-We would love it if you are blessed with prudent design aesthetics but we would also want you to be game about having ‘fun’ while working. Welcome to the world of LetzChange, where we have come together to introduce a culture of giving that aims to change lives for the better.
-Stalk us at [our website](https://letzchange.org), [YouTube](https://www.youtube.com/user/LetzChange), [FB](https://facebook.com/LetzChange), [Twitter](https://twitter.com/letz_change), [LinkedIn](https://www.linkedin.com/company/letzchange-org)
+++++++++++ Framework +++++++++++++++
+- webframework is Express
+- frontend is angular
 
-We are looking for determined front-end developers who come with a strong experience in implementing modern web UIs that prove to be are a delight for the user. If you think you have what it takes, build us this simple app in a frontend stack of your choosing.
-
-### Objective
-A simple Radio app where user can listen to already requested songs by other and request songs to be played by adding YouTube links
-
-### Tasks
-- The application must be a SPA.
-- The application should fetch the current playlist from the provided REST API and start playing songs from the playlist.
-- Once a song is finished, it should be removed from the playlist.
-- The user should be able to add a YouTube link, which must be validated by the app.
-- The app should then fetch basic information about the link like title, thumbnail and duration and add it to the playlist.
-- The playlist must be synced to the server using the provided REST API. 
-
-### Deliverables
-- Create a fork of this repository
-- Code your solution in a frontend stack of your choice
-- Include instructions on how to set it up and run in the README.md
-- Add your resume and other profile / project links **(Don't include your social profiles. We really don't care unless it's your steam profile.)**
-- Submit a pull request (PR)
-
-### API DOCS
-#### BASE PATH - http://playlist-royletzchange.rhcloud.com/
-
-#### Swagger - https://app.swaggerhub.com/apis/rahulroy9202/playlist/1.0.0
-#### Postman - https://www.getpostman.com/collections/6ffa9fd0618b95e60704
+++++++++++ Set Up ++++++++++
+- Put the complete structure in one folder
+- Run command - npm install in CLI
+- Use localhost mongodb for database
+- Make database with name radioApp
+- Add your first song with youtube link as its localserver and enjoy your music.

@@ -1,0 +1,37 @@
+<!DOCTYPE>
+<html ng-app="radioApp">
+    <head>
+        <meta charset='uf8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>radioApp-listen music</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script><!-- load angular -->
+        <script src="ng-youtube-embed.min.js"></script>
+        <script src="controller.js"></script>
+    </head>
+    <body ng-controller="mainController">
+        <h1>Radio App</h1>
+        <!--<ng-youtube-embed 
+            video="videoID" 
+            enablejsapi="true"
+            onready="playerReady"
+            onstatechange="playerStateChanged"
+        >
+        </ng-youtube-embed>-->
+        <div id="ik_player"></div>
+        <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/{{currentPlaylist[0].id}}" frameborder="0" allowfullscreen></iframe>-->
+        <h2>Current Playlist</h2>
+        <ul>
+            <li ng-repeat="playlist in currentPlaylist ">
+                <span ng-click="onYouTubeIframeAPIReady(playlist.id)">{{playlist.title}}</span>
+            </li>
+        </ul>
+        <h2>Add your song to the playlist</h2>
+        <form ng-submit="youtubeData()">
+            <span>Enter youtube link</span>
+            <input type="text" ng-model="url"></input>
+            <input type="submit" value="Add"></input>
+        </form>
+       
+    </body>
+</html>
