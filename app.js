@@ -170,9 +170,7 @@ app.controller('YoutubeVideosController', function ($scope, $http, $log, Youtube
 
     $scope.display = function (id, title) {
       YoutubeVideosService.displayPlayer(id, title);
-     
-      YoutubeVideosService.deleteVideo($scope.AddedPlaylist, id);
-      $log.info('displayed id:' + id + ' and title:' + title);
+     $log.info('displayed id:' + id + ' and title:' + title);
     };
 
     $scope.queue = function (id, title) {
