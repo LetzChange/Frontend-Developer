@@ -18,6 +18,10 @@ A simple Radio app where user can listen to already requested songs by other and
 - The app should then fetch basic information about the link like title, thumbnail and duration and add it to the playlist.
 - The playlist must be synced to the server using the provided REST API. 
 
+### Bonus
+- Allow user to search youtube instead of just providing a url to YouTube video
+- Sync different versions of the application. If the application is open across two tabs or two different computers, both must be in sync for all activities. For e.g adding/removing/forwarding a song on any one, should update both of them.
+
 ### Deliverables
 - Create a fork of this repository
 - Code your solution in a frontend stack of your choice
