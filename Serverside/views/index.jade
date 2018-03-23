@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  
+  h1 Welcome to Testing Zone
+  
+  p To GET files copy this link :
+  h2 localhost:8000/list/Frontend
+  p Use any variable instead of "Frontend"
+  br
+  b Add or Delete any data with below action
+  
+  form(action='/add/submit', method='post')
+       p Submit you Content to ADD
+       input(type='text', name='id')
+       button(type='submit') ADD
+       
+    form(action='/remove/submit', method='post')
+       p Submit you Content to Remove
+       input(type='text', name='id')
+       button(type='submit') REMOVE
+       
+
