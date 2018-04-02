@@ -107,6 +107,18 @@ class App extends Component {
         self.setState({ playlist: data.data.data })
         console.log(data)
       }).catch(error => {
+        // axios({
+        //   method: 'post', 
+        //   url: "https://cors-anywhere.herokuapp.com/https://letzchange.org/api/playlist/add/", 
+        //   data: {
+        //     "data": {
+        //       "title": "Clarke and Dawe - The Front Fell Off",
+        //       "id": "3m5qxZm_JqM",
+        //       "duration": 2
+        //     }
+        //   }
+        // }).then(response=>self.getPlayList());
+        
         console.log('er', error)
         self.setState({ playlist: [] })
       });
@@ -115,7 +127,7 @@ class App extends Component {
     var self=this;
     window.setInterval(function(){
       self.getPlayList();
-    },2000)
+    },10000)
   }
 
   onAddToListFromSearch(id){
@@ -161,15 +173,15 @@ class App extends Component {
                             <div className="inputBox song amplitude-song-container amplitude-play-pause amplitude-paused amplitude-active-song-container" amplitude-song-index="0"
                               data-song="audio/01-title-staff-roll.mp3" data-cover="images/album-art/1.jpg">
                               <div className="song-meta-data">
-                                <input type="text" onChange={this.onURLChange} />
+                                <input type="text" placeholder="youtube video url" onChange={this.onURLChange} />
                               </div>
                               <div className="play-now">
                                 <a className="btn btn-sm btn-black">
-                                  <span className="normal-state" onClick={this.onAddClick}>Add to Playlist</span>
+                                  <span className="normal-state" onClick={this.onAddClick}>Add URL to Playlist</span>
                                 </a>
                               </div>
-                            </div>
-                            {songs}
+                            </div>                           
+                            {songs.length>1?songs:"PlayList will apear here"}
                           </div>
                           {/* <div className="slimScrollBar" ></div>
                           <div className="slimScrollRail" ></div> */}

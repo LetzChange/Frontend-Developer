@@ -42,15 +42,15 @@ class VideoSearch extends Component{
                     <div className="inputBox song amplitude-song-container amplitude-play-pause amplitude-paused amplitude-active-song-container" amplitude-song-index="0"
                         data-song="audio/01-title-staff-roll.mp3" data-cover="images/album-art/1.jpg">
                         <div className="song-meta-data">
-                            <input type="text" value={this.state.searchTerm} onChange={this.onSearchTermChange} />
+                            <input placeholder="Youtube video search" type="text" value={this.state.searchTerm} onChange={this.onSearchTermChange} />
                         </div>
                         <div className="play-now">
                             <a className="btn btn-sm btn-black">
-                                <span className="normal-state" onClick={this.displayResult}>Search</span>
+                                <span className="normal-state" onClick={this.displayResult}>Search YouTube</span>
                             </a>
                         </div>
                     </div>
-                    {items}
+                    {items.length>0?items:"Seach result will apear here"}
                </div>    
             </div>
         );
