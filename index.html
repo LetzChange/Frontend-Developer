@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor..
+-->
+<html>
+<head>
+	<link href="format.css" rel="stylesheet" type="text/css"/>
+	<title>Radio</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+	
+</head>
+<body style="background-color:Cornsilk;">
+    <div id="box2">
+        <font size="7" color="DarkBlue"><b>- - - - - - - - - - - Welcome @ RADIO - - - - - - - - - -</b></font>
+    </div>
+	<div id="box1">
+               <h2>Add your own Song from Youtube</h2>
+               <input id="you-link" type="text" maxlength="100" size="100"><br><br>
+               <input id="you-bttn" type="button" value="Show Details">
+               <button id="GET">Show Playlist</button>
+        </div>
+    
+            
+	<div id="box3"></div>
+        <div id="box4"></div>
+	<script>
+		
+                
+		$(function() {
+			$("#you-link").on("keypress", function(e) {
+				if (e.which === 13) {
+					e.preventDefault();
+					$("#you-bttn").trigger("click");
+                                        
+				}
+			});
+			$("#you-bttn").on("click", function() {
+				$("#box3, #box4").empty();
+                                
+                                //VALIDATE URL
+				var videoid = $("#you-link").val();
+				var matches = videoid.match(/^https?:\/\/www\.youtube\.com\/.*[?&]v=([^&]+)/i) || videoid.match(/^https?:\/\/youtu\.be\/([^?]+)/i);
+				if (matches) {
+					videoid = matches[1];
+				}
+				if (videoid.match(/^[a-z0-9_-]{11}$/i) === null) {
+					$("<font size=5 color=red >Please provide a valid Youtube link</font>").appendTo("#box3");
+					return;
+				}
+				$.getJSON("https://www.googleapis.com/youtube/v3/videos", {
+					key: "AIzaSyAaluZrDPLq4_gvuSj9SYGXdV7rQpIwtCY",
+					part: "snippet,statistics,contentDetails",
+					id: videoid
+				}, function(data) {
+					if (data.items.length === 0) {
+						$("<p style='color: #F00;'>Video not found.</p>").appendTo("#box3");
+						return;
+					}
+                                        var titlee=data.items[0].snippet.title; // title of video
+                                        var min =((data.items[0].contentDetails.duration).slice(2,-4));
+                                        var sec = ((data.items[0].contentDetails.duration).substr(2)).slice(-3,-1);
+                                        var minn=min*60;
+                                        var durationn= parseInt(minn)+parseInt(sec);  //duration of video
+                                        var idd;
+                                        var idd1= document.getElementById("you-link").value;
+                                        var n = idd1.search("=");
+                                        var len=idd1.length;
+                                        idd = idd1.slice(n+1, len); //id of video
+                                        console.log(durationn);
+                                        
+                  //ADD TO PLAYLIST
+                  $('<button onclick="myFunction()">Single Play</button>').appendTo("#box1");
+                  $('<input id="play" type="button" value="Add to Playlist">').appendTo("#box1");
+                  $(document).ready(function(){
+                  $("#play").click(function(){
+                      console.log("ADDED");
+                    var data ={
+                        "id": idd,
+                         "title": titlee,
+                         "duration": durationn 
+                         };
+                         
+                     $.post("https://raw.githubusercontent.com/mesaikat17/hello-world1/master/filetest.json",data,
+                     function(data,status){
+                     alert("Song Added to Playlist");
+                  });
+                });
+             });
+                                        
+                                        //SHOW DETAILS
+					$("<img>", {
+						src: data.items[0].snippet.thumbnails.medium.url,
+						width: data.items[0].snippet.thumbnails.medium.width,
+						height: data.items[0].snippet.thumbnails.medium.height
+					}).appendTo("#box3");
+					$("<h1></h1>").text(data.items[0].snippet.title).appendTo("#box3");
+					$("<font size=5 color=blue ></font>").text("Duration: " + (((data.items[0].contentDetails.duration).slice(2,-4))+" Minute " + ((data.items[0].contentDetails.duration).substr(2)).slice(-3,-1))+" Second " ).appendTo("#box3");
+					//console.log(data.items[0].snippet.title);
+                                        }).fail(function(jqXHR, textStatus, errorThrown) {
+					$("<p style='color: red;'></p>").text(jqXHR.responseText || errorThrown).appendTo("#box3");
+                                        console.log(myId);
+                                        console.log(data.items[0].snippet.title);
+				});
+			
+		});  
+        });
+        
+        
+   
+             var i=0;
+             var n=0;
+             
+             //GETTING ID OF YOUTUBE URL 
+         function getId(url) 
+         {
+            
+            var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            var match = url.match(regExp);
+
+            if (match && match[2].length == 11) 
+            {
+             return match[2];
+             
+            }
+             else 
+                {
+                 return 'error';
+                }
+         }
+
+         
+    //MAKING THE EMBEDDED URL OF YOUTUBE     
+    function myFunction() {
+    var x = document.getElementById("you-link").value;
+    var myId = getId(x);
+    var ui = "https://www.youtube.com/embed/"+myId+"?enablejsapi=1";
+    n++;
+    for(i=0;i<n;i++){
+    $('#myCode').html('<p><b>Click too Play<b/></p><iframe width="30" height="30" src="'+ui+'" frameborder="0" allowfullscreen></iframe>');
+    }
+}
+    
+  </script>   
+  
+  <div id="box5">
+            <pre id="myCode"></pre>
+        </div>
+     <script>
+         
+         
+         //FETCHING PLAYLIST FROM JSON FILE
+        $(document).ready(function(){
+        $("#GET").click(function() {
+
+        //This below url is created by me. It will be replaced with the given Rested api base url follows by /get
+        var dmJSON = "https://raw.githubusercontent.com/mesaikat17/hello-world1/master/filetest.json";
+        $.getJSON( dmJSON, function(data) {
+        $.each(data, function(i, f) {
+        var ui = "https://www.youtube.com/embed/"+f.id+"?enablejsapi";
+        console.log(ui);
+       
+        var tblRow = "<tr>" + "<td>" + f.id + "</td>" + "<td>" + f.title + "</td>" + "<td>" + f.duration + '</td><td><iframe width="40" height="40" src="'+ui+'" frameborder="0" allowfullscreen></iframe></tr>';
+        $(tblRow).appendTo("#entrydata tbody");
+       
+       //DELETING SONG PLAYLIST
+         $("#dell").click(function() {
+         $.getJSON( dmJSON, function(data) {
+         $.each(data, function(i, v) {
+         var me= document.getElementById("remove").value;
+         //original url used for adding song to playlist
+         var url="staging.letzchange.org/api/playlist/add"+me;
+          $.post(url,data,
+          function(data,status){
+            alert(v.title+ "Removed");
+        });
+      });
+    });
+   }); 
+       
+ });
+
+});
+
+});
+});
+</script>  
+<div id="box6">
+<div class="wrapper" id="box5">
+<div class="profile" id="box5">
+<table id= "entrydata" border="1" style="width:60%">
+    <tr align="center" width="100%"><td colspan="4">PLAYLIST</td></tr>
+
+    <tr align="center" ><td width="5%">Id</td>
+    <td width="25%">Title</td>
+    <td width="5%">Duration</td>
+    <td width="10%">PLAY</td></tr>
+    
+   
+</table>
+    
+   <div id="box7">
+<p>COPY ID to DELETE : <input type="text" value="9xVp8m0fJSg" id="remove"> <button id="dell">DELETE</button></p> 
+</div> 
+</div>
+</div>
+</div>
+
+</div>
+</body>
+</html>
